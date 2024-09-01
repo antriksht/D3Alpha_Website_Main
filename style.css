@@ -366,6 +366,7 @@ strong {
 }
 
 /* Section: Hero */
+/* Default for desktop */
 .pr__hero__wrap {
     position: relative;
     background-color: #fafafa;
@@ -375,6 +376,16 @@ strong {
     display: block;
     z-index: 99;
 }
+
+/* Adjust for mobile screens */
+@media (max-width: 468px) {
+    .pr__hero__wrap {
+        background-size: auto 100vh; /* Adjust the height to be full viewport height */
+        background-position: left top; /* Keep the image skewed to the left */
+        height: 100vh; /* Ensure the hero section takes up the full viewport height */
+    }
+}
+
 
 /* Adjust for mobile screens */
 @media (max-width: 368px) {
@@ -1474,7 +1485,7 @@ body.single-post .hero-content .category {
 }
 .uk-button.uk-button-default {
   border-color: #E9204F !important;
-  color: #101010;
+  color: #E9204F;
   position: relative;
   z-index: 1;
 }
