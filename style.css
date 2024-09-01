@@ -367,13 +367,22 @@ strong {
 
 /* Section: Hero */
 .pr__hero__wrap {
-  position: relative;
-  background-color: #fafafa;
-  background-repeat: no-repeat;
-  background-size: 640px;
-  background-position: left;
-  display: block;
-  z-index: 50;
+    position: relative;
+    background-color: #fafafa;
+    background-repeat: no-repeat;
+    background-size: 640px;
+    background-position: left;
+    display: block;
+    z-index: 99;
+}
+
+/* Adjust for mobile screens */
+@media (max-width: 368px) {
+    .pr__hero__wrap {
+        background-size: cover; /* Cover the whole hero section */
+        background-position: left; /* Align it at the top */
+        height: 70vh; /* Ensure it still takes up the full viewport height */
+    }
 }
 .pr__hero__wrap.pr__dark {
   background-color: #000;
@@ -2128,3 +2137,7 @@ a.uk-slidenav > * {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#pr__contact {
+	
+}
