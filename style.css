@@ -28,6 +28,22 @@ body {
   color: #747474;
 }
 
+@keyframes slideDown {
+  from {
+      transform: translateY(-50px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.hero-animate {
+  animation: slideDown 1s ease-out forwards;
+}
+
+
 /* Links */
 a,
 a:hover {
