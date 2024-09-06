@@ -133,20 +133,4 @@ jQuery(document).ready(function ($) {
          });
      }
 
-     
-     document.addEventListener("DOMContentLoaded", function() {
-        const heroSection = document.querySelector(".pr__hero");
-        const heroText = document.querySelector(".pr__hero .title");
-        const heroButton = document.querySelector(".pr__hero .button");
-    
-        if (heroText && heroButton) {
-            // Wait for the text and button to be fully loaded
-            heroText.addEventListener("animationend", function() {
-                heroSection.classList.add("hero-animate");
-            });
-        }
-    });
-    
-
-
 });
