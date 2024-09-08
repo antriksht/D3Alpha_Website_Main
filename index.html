@@ -41,7 +41,7 @@
                     .then(files => {
                         // Filter only image files if needed
                         files.forEach(file => {
-                            if (file.name.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
+                            if (file.name.match(/\.(html)$/)) {
                                 // Push each image file name to the dataLayer
                                 dataLayer.push({ 'imageFileName': file.name });
                             }
