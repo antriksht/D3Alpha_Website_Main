@@ -19,9 +19,46 @@
             <link rel="stylesheet" href="assets/css/fonts.css" />
             <link rel="stylesheet" href="assets/css/pixeicons.css" />
             <link href="style.css" rel="stylesheet">
+
         </head>
         <body class="home front-page">
-
+            <script>
+                // Replace 'YOUR_GITHUB_TOKEN' with your actual GitHub token if necessary
+                const repoOwner = 'antriksht'; // GitHub username
+                const repoName = 'D3Alpha_Website_Main'; // Repository name
+                const folderPath = 'assets/images'; // Folder path to list contents
+                const githubAPIUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+        
+                // Function to get contents of the folder
+                function getFolderContents() {
+                    fetch(githubAPIUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(files => {
+                        // Filter only image files if needed
+                        files.forEach(file => {
+                            if (file.name.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
+                                // Push each image file name to the dataLayer
+                                dataLayer.push({ 'imageFileName': file.name });
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching folder contents:', error);
+                    });
+                }
+        
+                // Initialize the dataLayer array if not already initialized
+                window.dataLayer = window.dataLayer || [];
+        
+                // Call the function to get folder contents
+                getFolderContents();
+            </script>
+    
             <div id="loader" class="preloader">
                 <span class="loading">
                     <span class="txt">Loading</span>
