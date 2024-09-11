@@ -37,3 +37,5 @@ jobs:
           git commit -m "Automated sitemap update" sitemap.xml
           git push
         fi
+      env:                                                                                                                                  
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
