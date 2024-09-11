@@ -6,54 +6,67 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="msapplication-TileColor" content="#E9204F">
             <meta name="theme-color" content="#E9204F">
-            <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-            <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-            <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-            <link rel="icon" href="favicon.ico">
-            <link rel="manifest" href="assets/images/site.webmanifest">
-            <link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#E9204F">
-            <link rel="stylesheet" href="assets/css/normalize.min.css" />
-            <link rel="stylesheet" href="assets/css/pr.animation.css" />
-            <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-            <link rel="stylesheet" href="assets/css/uikit.min.css" />
-            <link rel="stylesheet" href="assets/css/fonts.css" />
-            <link rel="stylesheet" href="assets/css/pixeicons.css" />
-            <link href="style.css" rel="stylesheet">
+            <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+            <link rel="icon" href="../favicon.ico">
+            <link rel="manifest" href="../assets/images/site.webmanifest">
+            <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#E9204F">
+            <link rel="stylesheet" href="../assets/css/normalize.min.css" />
+            <link rel="stylesheet" href="../assets/css/pr.animation.css" />
+            <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
+            <link rel="stylesheet" href="../assets/css/uikit.min.css" />
+            <link rel="stylesheet" href="../assets/css/fonts.css" />
+            <link rel="stylesheet" href="../assets/css/pixeicons.css" />
+            <link href="../style.css" rel="stylesheet">
 
         </head>
         <body class="home front-page">
+            
             <script>
-                const githubAPIUrl = `https://api.github.com/repos/antriksht/D3Alpha_Website_Main/contents/Work-Ideas`;
-        
-                // Function to get contents of the folder
-                function getFolderContents() {
-                    fetch(githubAPIUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.json();
-                    })
-                    .then(files => {
-                        // Filter only image files if needed
-                        files.forEach(file => {
-                            if (file.name.match(/\.(html)$/)) {
-                                // Push each image file name to the dataLayer
-                                dataLayer.push({ 'imageFileName': file.name });
+                const sitemapUrl = `https://d3alpha.com/sitemap.xml`;
+            
+                // Function to fetch and parse sitemap.xml
+                function getSitemapContents() {
+                    fetch(sitemapUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok');
                             }
+                            return response.text(); // We want the raw XML text here
+                        })
+                        .then(sitemapXML => {
+                            // Parse the XML string to a DOM object
+                            const parser = new DOMParser();
+                            const xmlDoc = parser.parseFromString(sitemapXML, 'application/xml');
+            
+                            // Get all <url> nodes
+                            const urlElements = xmlDoc.getElementsByTagName('url');
+                            
+                            // Loop through all <url> nodes and extract <loc> content
+                            for (let i = 0; i < urlElements.length; i++) {
+                                const locElement = urlElements[i].getElementsByTagName('loc')[0];
+                                const locValue = locElement.textContent;
+            
+                                // Filter URLs that are in the "Work-Ideas" section and end with .html
+                                if (locValue.includes('/Work-Ideas/') && locValue.match(/\.html$/)) {
+                                    // Push the matching URLs to the dataLayer
+                                    dataLayer.push({ 'htmlFileUrl': locValue });
+                                }
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching or parsing sitemap:', error);
                         });
-                    })
-                    .catch(error => {
-                        console.error('Error fetching folder contents:', error);
-                    });
                 }
-        
+            
                 // Initialize the dataLayer array if not already initialized
                 window.dataLayer = window.dataLayer || [];
-        
-                // Call the function to get folder contents
-                getFolderContents();
+            
+                // Call the function to get sitemap contents
+                getSitemapContents();
             </script>
+            
 
             <div id="loader" class="preloader">
                 <span class="loading">
@@ -92,7 +105,7 @@
                     <div class="uk-container">
                         <div class="inner">
                             <div class="logo">
-                                <a href='index.html'>
+                                <a href='../index.html'>
                                     <div class="brand"></div>
                                 </a>
                             </div>
@@ -104,12 +117,12 @@
                                             <a href="#pr__services">Services  <span data-uk-navbar-parent-icon></span></a>
                                             <div class="sub-menu uk-navbar-dropdown">
                                                 <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                    <li><a href='services/service-marketing.html'>Digital Strategy</a></li>
-                                                    <li><a href='service-single.html'>UX/UI Design</a></li>
-                                                    <li><a href='service-single.html'>Product Design</a></li>
-                                                    <li><a href='service-single.html'>Brand Identity</a></li>
-                                                    <li><a href='service-single.html'>Media Planing</a></li>
-                                                    <li><a href='service-single.html'>SEO</a></li>
+                                                    <li><a href='../services/service-marketing.html'>Digital Strategy</a></li>
+                                                    <li><a href='../service-single.html'>UX/UI Design</a></li>
+                                                    <li><a href='../service-single.html'>Product Design</a></li>
+                                                    <li><a href='../service-single.html'>Brand Identity</a></li>
+                                                    <li><a href='../service-single.html'>Media Planing</a></li>
+                                                    <li><a href='../service-single.html'>SEO</a></li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -633,12 +646,12 @@
         </div><!-- Contact Form Popup End -->
 
         <!-- Needed Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/anime.min.js"></script>
-        <script src="assets/js/pr.animation.js"></script>
-        <script src="assets/js/uikit.min.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
-        <script src="assets/js/validate.js"></script>
-        <script src="assets/js/main.js"></script>
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/anime.min.js"></script>
+        <script src="../assets/js/pr.animation.js"></script>
+        <script src="../assets/js/uikit.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/validate.js"></script>
+        <script src="../assets/js/main.js"></script>
     </body>
 </html>
