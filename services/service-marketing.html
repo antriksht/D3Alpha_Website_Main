@@ -64,14 +64,26 @@
                                 </a>
                             </div>
                             <div class="navbar pr-font-second">
-                                <nav class="menu" data-uk-scrollspy-nav="offset: 0; closest: li; scroll: true">
+                                <nav class="menu" data-uk-navbar="" data-uk-scrollspy-nav="offset: 0; closest: li; scroll: true">
                                     <ul>
                                         <li><a href="#pr__hero">Home</a></li>
-                                        <li><a href="#pr__services">Services</a></li>
-                                        <li><a href="#pr__works">Works</a></li>
+                                        <li>
+                                            <a href="#pr__services">Services  <span data-uk-navbar-parent-icon></span></a>
+                                            <div class="sub-menu uk-navbar-dropdown">
+                                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                                    <li><a href='services/service-marketing.html'>Digital Strategy</a></li>
+                                                    <li><a href='service-single.html'>UX/UI Design</a></li>
+                                                    <li><a href='service-single.html'>Product Design</a></li>
+                                                    <li><a href='service-single.html'>Brand Identity</a></li>
+                                                    <li><a href='service-single.html'>Media Planing</a></li>
+                                                    <li><a href='service-single.html'>SEO</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li><a href="#pr__concepts">Concepts</a></li>
                                         <li><a href="#pr__about">About</a></li>
-                                        <li><a href="#pr__clients">Clients</a></li>
-                                        <li><a href="#pr__blog">Blog</a></li>
+                                        <li><a href="#pr__internal">Internal Note</a></li>
+                                        <!-- <li><a href="#pr__blog">Blog</a></li> -->
                                         <li><a href="#pr__contact">Contact</a></li>
                                     </ul>
                                 </nav>
