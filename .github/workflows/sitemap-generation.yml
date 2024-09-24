@@ -21,6 +21,8 @@ jobs:
       uses: cicirello/generate-sitemap@v1
       with:
         base-url-path: https://d3alpha.com/
+        excludes: |
+          /assets/**
     
     - name: Output stats
       run: |
