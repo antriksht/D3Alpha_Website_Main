@@ -22,6 +22,7 @@ jobs:
       with:
         base-url-path: https://d3alpha.com/
         excludes: |
+          assets/**
           /assets/**
     
     - name: Output stats
